@@ -5,7 +5,7 @@
     $passdb = "";
     
     try {
-        $cnx = new PDO("mysql:host=$host;dbname=$base", $logindb, $passdb);
+        $bdd = new PDO("mysql:host=$host;dbname=$base;charset=utf8;", $logindb, $passdb);
     } catch (Exception $e) {
         die('Erreur : ' . $e->getMessage());
     }
