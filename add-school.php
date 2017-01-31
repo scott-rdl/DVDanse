@@ -2,7 +2,6 @@
 $sucess = '0';
 
 if(!empty($_POST['act'])){
-    
     if($_POST['act'] == "add_school" and !empty($_POST['name'])){
         $name = trim($_POST['name']);
         $bg_color = trim($_POST['color']);
