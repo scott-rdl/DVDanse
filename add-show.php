@@ -1,4 +1,5 @@
 <?php 
+include "include/cnx.php";
 $sucess = '0';
 
 if(!empty($_POST['act'])){
