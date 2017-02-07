@@ -29,7 +29,7 @@ if(!empty($_POST['act'])){
             if ($sucess != 0){
                 echo '<div class="alert alert-success" role="alert">"'.$sucess.'" ajouté avec succès !</div>';
             } ?>
-          
+            
             <h2>Ajouter un Spectacle</h2>
             
             <form method="POST" action="#" >
@@ -49,8 +49,7 @@ if(!empty($_POST['act'])){
                 
                 <div class="form-group">
                     <select name="school" placeholder="Nom de l'école" class="form-control" id="sel1">
-                        <option value="" disabled selected>Choisir un établissement</option>
-                        <?php 
+                        <option value="" disabled selected>Choisir un établissement</option><?php 
                         $req = $bdd->query('SELECT * FROM schools ORDER BY sch_name');
                         while ($data = $req->fetch()){
                             echo '<option value="'.$data['sch_id'].'" >'.$data['sch_name'].'</option>';
@@ -73,7 +72,7 @@ if(!empty($_POST['act'])){
                         <td><b>Etablissement</b></td>
                     </tr>
                 </thead>
-                <tbody> <?php
+                <tbody><?php
                     $req = $bdd->query('
                         SELECT * 
                         FROM shows, schools 
