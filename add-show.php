@@ -8,7 +8,7 @@ if(!empty($_POST['act'])){
         $time = strtotime(trim($_POST['date']));
         $school = $_POST['school'];
         $req = $bdd->prepare('INSERT INTO shows (date, title, school) VALUES (:date, :title, :school)');
-        $req->execute(array('date' => $time, 'title' => $title, 'school' => $school));
+        $req->execute(array('sho_date' => $time, 'sho_title' => $title, 'sho_id_school' => $school));
         $sucess = $title;
     }
 } ?>
@@ -49,15 +49,12 @@ if(!empty($_POST['act'])){
                 
                 <div class="form-group">
                     <select name="school" placeholder="Nom de l'école" class="form-control" id="sel1">
-                        
                         <option value="" disabled selected>Choisir un établissement</option>
-                        <option value="EMMDT de Petit-Quevilly" >EMMDT de Petit-Quevilly</option> 
-                        <option value="Conservatoire de Rouen">Conservatoire de Rouen</option>
-                        <option value="Hangar 23">Hangar 23</option>
-                        <option value="ECFM Canteleu">ECFM Canteleu</option>
-                        <option value="ACSBD de Mesnil-Esnard">ACSBD de Mesnil-Esnard</option>
-                        <option value="Conservatoire de Val-de-Reuil">Conservatoire de Val-de-Reuil</option>
-                        
+                        <?php 
+                        $req = $bdd->query('SELECT * FROM schools ORDER BY sch_name');
+                        while ($data = $req->fetch()){
+                            echo '<option value="'.$data['sch_id'].'" >'.$data['sch_name'].'</option>';
+                        } ?>
                     </select>
                 </div>
             
@@ -80,13 +77,13 @@ if(!empty($_POST['act'])){
                     $req = $bdd->query('
                         SELECT * 
                         FROM shows, schools 
-                        WHERE shows.id_school = schools.sch_id
-                        ORDER BY date DESC
+                        WHERE shows.sho_id_school = schools.sch_id
+                        ORDER BY sho_date DESC
                     ');
                     while ($data = $req->fetch()){
                         echo '<tr style="color: #'.$data['sch_color'].'">';
-                        echo '<td>'.date('d.m.Y', $data['date']).'</td>';
-                        echo '<td>'.$data['title'].'</td>';
+                        echo '<td>'.date('d.m.Y', $data['sho_date']).'</td>';
+                        echo '<td>'.$data['sho_title'].'</td>';
                         echo '<td>'.$data['sch_name'].'</td>';
                         echo '</tr>';
                     } ?>

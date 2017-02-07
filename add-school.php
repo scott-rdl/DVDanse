@@ -60,8 +60,8 @@ if(!empty($_POST['act'])){
                         <td><b>Nom</b></td>
                         <td><b>Couleur</b></td>
                     </tr>
-                 </thead>
-                 <tbody> <?php
+                </thead>
+                <tbody> <?php
                     $req = $bdd->query('SELECT * FROM schools');
                     while ($data = $req->fetch()){
                         echo '<tr>';
