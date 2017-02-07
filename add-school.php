@@ -61,7 +61,7 @@ if(!empty($_POST['act'])){
                         <td><b>Couleur</b></td>
                     </tr>
                 </thead>
-                <tbody> <?php
+                <tbody><?php
                     $req = $bdd->query('SELECT * FROM schools');
                     while ($data = $req->fetch()){
                         echo '<tr>';

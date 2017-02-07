@@ -63,6 +63,7 @@ if(!empty($_POST['act'])){
             </form><br />      
         
             <br /><hr />
+            
             <h2>Liste</h2>
             <table class="table table-striped" width="100%">
                 <thead>
