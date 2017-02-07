@@ -10,7 +10,7 @@
             <a href="add-school.php">Ajouter un Etablissement</a>
         </li>
         <li <?php if($_SERVER['PHP_SELF']=='/cmd/stocks.php'){echo 'class="active"';} ?> >
-            <a href="add-school.php">Gestion des stocks</a>
+            <a href="stocks.php">Gestion des stocks</a>
         </li>
     </ul>
 </div>
