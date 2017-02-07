@@ -67,7 +67,7 @@ if(!empty($_POST['act'])){
             </form><br />      
         
             <br /><hr />
-            <h2>Liste des spectacles</h2>
+            <h2>Liste</h2>
             <table class="table table-striped" width="100%">
                 <thead>
                     <tr>
@@ -75,20 +75,23 @@ if(!empty($_POST['act'])){
                         <td><b>Titre</b></td>
                         <td><b>Etablissement</b></td>
                     </tr>
-                 </thead>
-                 <tbody> <?php
-                    $req = $bdd->query('SELECT * FROM shows ORDER BY date DESC');
+                </thead>
+                <tbody> <?php
+                    $req = $bdd->query('
+                        SELECT * 
+                        FROM shows, schools 
+                        WHERE shows.id_school = schools.sch_id
+                        ORDER BY date DESC
+                    ');
                     while ($data = $req->fetch()){
-                        echo '<tr>';
+                        echo '<tr style="color: #'.$data['sch_color'].'">';
                         echo '<td>'.date('d.m.Y', $data['date']).'</td>';
                         echo '<td>'.$data['title'].'</td>';
-                        echo '<td>'.$data['school'].'</td>';
+                        echo '<td>'.$data['sch_name'].'</td>';
                         echo '</tr>';
                     } ?>
                 </tbody>
             </table>
-            
-            
         </div>
         </div>
     </div>

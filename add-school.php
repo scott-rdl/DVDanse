@@ -71,12 +71,6 @@ if(!empty($_POST['act'])){
                     } ?>
                 </tbody>
             </table>
-            
-            
-            
-            
-            
-            
         </div>
         </div>
     </div>
