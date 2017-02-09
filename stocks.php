@@ -1,10 +1,14 @@
 <?php 
 include "include/cnx.php";
-$sucess = '0';?>
+$sucess = '0';
 
-
-
-
+if(isset($_POST['id'])){
+    $qte = $_POST['qte'];
+    $id = $_POST['id'];
+    $req = $bdd->prepare('UPDATE shows SET sho_stock = :qte  WHERE sho_id = :id');
+    $req->execute(array('qte' => $qte, 'id' => $id));
+    $sucess = 1;
+} ?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -20,7 +24,7 @@ $sucess = '0';?>
         <div class="box">
             <?php 
             if ($sucess != 0){
-                echo '<div class="alert alert-success" role="alert"> Modification des stocks effectuée !</div>';
+                echo '<div class="alert alert-success" role="alert">Modification des stocks effectuée !</div>';
             } ?>
             
             <h2>Stocks</h2>
@@ -46,15 +50,18 @@ $sucess = '0';?>
                             echo '<tr style="color: #'.$data['sch_color'].'">';
                             echo '<td>'.date('d.m.Y', $data['sho_date']).'</td>';
                             echo '<td>'.$data['sho_title'].'</td>';
-                            echo '<td>'.$data['sch_name'].'</td>';
-                            echo '<td><input style="max-width: 50px;" type="number" name="'.$data['sho_id'].'" value="'.$data['sho_stock'].'"></td>';
-                            ?>
-                            <td>
-                                <button type="submit" class="btn btn-default">
-                                    <i class='fa fa-refresh' aria-hidden='true' ></i>
-                                </button>
-                            </td>
-                            
+                            echo '<td>'.$data['sch_name'].'</td>';?>
+                            <form method="POST" action="#" >
+                                <td>
+                                    <input style="max-width: 50px;" type="number" name="qte" value="<?php echo $data['sho_stock']; ?>">
+                                </td>
+                                <td>
+                                    <input type="hidden" name="id" value="<?php echo $data['sho_id']; ?>" />
+                                    <button type="submit" >
+                                        <i class='fa fa-refresh' aria-hidden='true' ></i>
+                                    </button>
+                                </td>
+                            </form>
                             <?php
                             echo '</tr>';
                         } ?>

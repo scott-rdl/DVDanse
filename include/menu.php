@@ -3,6 +3,9 @@
         <li <?php if($_SERVER['PHP_SELF']=='/cmd/index.php'){echo 'class="active"';} ?> >
             <a href="index.php">Home</a>
         </li>
+        <li <?php if($_SERVER['PHP_SELF']=='/cmd/sold.php'){echo 'class="active"';} ?> >
+            <a href="sold.php">Ventes</a>
+        </li>
         <li <?php if($_SERVER['PHP_SELF']=='/cmd/add-show.php'){echo 'class="active"';} ?> >
             <a href="add-show.php">Ajouter un Spectacle</a>
         </li>

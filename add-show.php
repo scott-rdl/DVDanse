@@ -2,7 +2,7 @@
 include "include/cnx.php";
 $sucess = '0';
 
-if(!empty($_POST['act'])){
+if(isset($_POST['act'])){
     if($_POST['act'] == "add_show" and !empty($_POST['title'])){
         $title = trim($_POST['title']);
         $time = strtotime(trim($_POST['date']));
@@ -60,11 +60,10 @@ if(!empty($_POST['act'])){
                 <input type="hidden" name="act" value="add_show" />
                 <input type="submit" value="Ajouter" class="btn btn-info" />
                 <input type="reset" value="Annuler" class="btn btn-danger" />
-            </form><br />      
+            </form>    
         
             <br /><hr />
             
-            <h2>Liste</h2>
             <table class="table table-striped" width="100%">
                 <thead>
                     <tr>

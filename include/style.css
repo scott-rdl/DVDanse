@@ -11,6 +11,10 @@ body{
     font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
 }
 
+td {
+    text-align: middle;
+}
+
 .menu {
     margin: 20px auto 20px auto;
 }

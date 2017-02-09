@@ -2,7 +2,7 @@
 include "include/cnx.php";
 $sucess = '0';
 
-if(!empty($_POST['act'])){
+if(isset($_POST['act'])){
     if($_POST['act'] == "add_school" and !empty($_POST['sch_name'])){
         $sch_name = trim($_POST['sch_name']);
         $sch_color = trim($_POST['sch_color']);
@@ -49,11 +49,10 @@ if(!empty($_POST['act'])){
                 <input type="hidden" name="act" value="add_school" />
                 <input type="submit" value="Ajouter" class="btn btn-info" />
                 <input type="reset" value="Annuler" class="btn btn-danger" />
-            </form><br />
+            </form>
             
             <br /><hr />
             
-            <h2>Liste</h2>
             <table class="table table-striped" width="100%">
                 <thead>
                     <tr>
