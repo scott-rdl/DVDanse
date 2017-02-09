@@ -2,6 +2,10 @@
 include "include/cnx.php";
 $sucess = '0';?>
 
+
+
+
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -28,6 +32,7 @@ $sucess = '0';?>
                             <td><b>Titre</b></td>
                             <td><b>Etablissement</b></td>
                             <td><b>Stocks</b></td>
+                            <td><b>Action</b></td>
                         </tr>
                     </thead>
                     <tbody><?php
@@ -43,6 +48,14 @@ $sucess = '0';?>
                             echo '<td>'.$data['sho_title'].'</td>';
                             echo '<td>'.$data['sch_name'].'</td>';
                             echo '<td><input style="max-width: 50px;" type="number" name="'.$data['sho_id'].'" value="'.$data['sho_stock'].'"></td>';
+                            ?>
+                            <td>
+                                <button type="submit" class="btn btn-default">
+                                    <i class='fa fa-refresh' aria-hidden='true' ></i>
+                                </button>
+                            </td>
+                            
+                            <?php
                             echo '</tr>';
                         } ?>
                     </tbody>
