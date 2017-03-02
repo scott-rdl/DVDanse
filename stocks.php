@@ -36,7 +36,7 @@ if(isset($_POST['id'])){
                             <td><b>Titre</b></td>
                             <td><b>Etablissement</b></td>
                             <td><b>Stocks</b></td>
-                            <td><b>Action</b></td>
+                            <td><b>Save</b></td>
                         </tr>
                     </thead>
                     <tbody><?php
