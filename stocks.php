@@ -4,9 +4,10 @@ $sucess = '0';
 
 if(isset($_POST['id'])){
     $qte = $_POST['qte'];
+    $price = $_POST['price'];
     $id = $_POST['id'];
-    $req = $bdd->prepare('UPDATE shows SET sho_stock = :qte  WHERE sho_id = :id');
-    $req->execute(array('qte' => $qte, 'id' => $id));
+    $req = $bdd->prepare('UPDATE shows SET sho_stock = :qte, sho_price = :price WHERE sho_id = :id');
+    $req->execute(array('qte' => $qte, 'price' => $price, 'id' => $id));
     $sucess = 1;
 } ?>
 
@@ -36,6 +37,7 @@ if(isset($_POST['id'])){
                             <td><b>Titre</b></td>
                             <td><b>Etablissement</b></td>
                             <td><b>Stocks</b></td>
+                            <td><b>Tarif</b></td>
                             <td><b>Save</b></td>
                         </tr>
                     </thead>
@@ -54,6 +56,9 @@ if(isset($_POST['id'])){
                             <form method="POST" action="#" >
                                 <td>
                                     <input style="max-width: 50px;" type="number" name="qte" value="<?php echo $data['sho_stock']; ?>">
+                                </td>
+                                <td>
+                                    <input style="max-width: 50px;" type="number" name="price" value="<?php echo $data['sho_price']; ?>">
                                 </td>
                                 <td>
                                     <input type="hidden" name="id" value="<?php echo $data['sho_id']; ?>" />

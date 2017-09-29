@@ -7,8 +7,14 @@ if(isset($_POST['act'])){
         $title = trim($_POST['title']);
         $time = strtotime(trim($_POST['date']));
         $school = $_POST['school'];
-        $req = $bdd->prepare('INSERT INTO shows (date, title, school) VALUES (:date, :title, :school)');
-        $req->execute(array('sho_date' => $time, 'sho_title' => $title, 'sho_id_school' => $school));
+        $price = $_POST['price'];
+        $req = $bdd->prepare('INSERT INTO shows (date, title, school, price) VALUES (:date, :title, :school, :price)');
+        $req->execute(array(
+            'sho_date' => $time, 
+            'sho_title' => $title, 
+            'sho_price' => $price,
+            'sho_id_school' => $school
+        ));
         $sucess = $title;
     }
 } ?>
@@ -47,12 +53,19 @@ if(isset($_POST['act'])){
                     <input type="text" name="date" placeholder="<?php echo date("d-m-Y"); ?>" class="form-control" aria-describedby="basic-addon1" />
                 </div><br />
                 
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1">
+                        <i class="fa fa-eur"></i>
+                    </span>
+                    <input type="number" name="price" value="5" class="form-control" aria-describedby="basic-addon1" />
+                </div><br />
+                
                 <div class="form-group">
                     <select name="school" placeholder="Nom de l'école" class="form-control" id="sel1">
                         <option value="" disabled selected>Choisir un établissement</option><?php 
                         $req = $bdd->query('SELECT * FROM schools ORDER BY sch_name');
                         while ($data = $req->fetch()){
-                            echo '<option value="'.$data['sch_id'].'" >'.$data['sch_name'].'</option>';
+                            echo '<option style="color:#'.$data['sch_color'].';" value="'.$data['sch_id'].'" >'.$data['sch_name'].'</option>';
                         } ?>
                     </select>
                 </div>
@@ -70,6 +83,7 @@ if(isset($_POST['act'])){
                         <td><b>Date</b></td>
                         <td><b>Titre</b></td>
                         <td><b>Etablissement</b></td>
+                        <td><b>Tarif</b></td>
                     </tr>
                 </thead>
                 <tbody><?php
@@ -84,6 +98,7 @@ if(isset($_POST['act'])){
                         echo '<td>'.date('d.m.Y', $data['sho_date']).'</td>';
                         echo '<td>'.$data['sho_title'].'</td>';
                         echo '<td>'.$data['sch_name'].'</td>';
+                        echo '<td>'.$data['sho_price'].'</td>';
                         echo '</tr>';
                     } ?>
                 </tbody>
