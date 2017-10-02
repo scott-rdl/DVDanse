@@ -1,13 +1,2 @@
-admin/include/credentials.php
-admin/tmp/*
-!admin/tmp/.gitkeep
-photos/icones/*
-!photos/icones/icone0.png
-photos/images/*
-!photos/images/0
-photos/qrcodes/*
-!photos/qrcodes/.gitkeep
-photos/vignettes/*
-!photos/vignettes/0
-roro
-nbproject/
+include/bootstrap-3.3.6-dist
+include/font-awesome-4.5.0
