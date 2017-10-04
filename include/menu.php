@@ -9,6 +9,9 @@
         <li <?php if($_SERVER['PHP_SELF']=='/cmd/add-show.php'){echo 'class="active"';} ?> >
             <a href="add-show.php">Ajouter un Spectacle</a>
         </li>
+        <li <?php if($_SERVER['PHP_SELF']=='/cmd/add-support.php'){echo 'class="active"';} ?> >
+            <a href="add-support.php">Ajouter un Support</a>
+        </li>
         <li <?php if($_SERVER['PHP_SELF']=='/cmd/add-school.php'){echo 'class="active"';} ?> >
             <a href="add-school.php">Ajouter un Etablissement</a>
         </li>

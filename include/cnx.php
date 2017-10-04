@@ -1,6 +1,6 @@
 <?php 
     $host = "localhost";
-    $base = "cmd_dvd";
+    $base = "dvdanse";
     $logindb = "root";
     $passdb = "";
     
